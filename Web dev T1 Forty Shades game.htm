@@ -1,0 +1,231 @@
+<html>
+   <head>
+	</head> 
+	 <!-- for styling -->
+      <style>
+	     body {
+		 padding:0 400px 0 400px;
+         background-color:grey;
+         }
+	     #BT{
+		 position: absolute;
+		 top:0px;
+		 right:500px;
+		 color: white;
+		 }
+		 #Time{
+		 position: absolute;
+		 top: 0px;
+         right:650px;
+		 color: white;
+		 }
+		 #te{
+		 position:absolute;
+		 left:500px;
+		 top:80px;
+		 font-size: 20;
+		 color:green;
+		 }
+		 #ng{
+		 position:absolute;
+		 right:500px;
+		 top:80px;
+		 font-size: 30;
+		 color:green;
+		 }
+		 #num{
+		 position:absolute;
+		 top:250px;
+		 left: 500px;
+		 font-size: 40;
+		 color:green;
+		 }
+         button
+         {
+         background-color:black;
+         border: solid black 2px;
+		 font-size: 20;
+		 color:green;
+	     width:100px;
+		 height:100px;
+         }
+		 #disp{
+		 color:green;
+		 font-size: 30;
+		 display:none;
+		 }
+      </style>
+   </head>
+   <!-- create table -->
+   <body>
+     <div id="Time">
+	  <p>TIME</p>
+      <label id="sec">0</label>
+	  <label >.</label>
+	  <label id="ms">00</label>
+	 </div>
+	 <div id="BT">
+	  <p onclick="listbest()">BEST TIME</p>
+	  <p id="Bs"></p>
+	 </div>
+	 <div id="te"> 
+	  <p >Click <b>the numbers</b> as </p>
+	  <p>quickly as you can!</p>
+	 </div> 
+	 <div id="ng"> 
+         <p onClick="window.location.reload();"><b>NEW GAME</b></p>
+	 </div>
+	 <script type="text/javascript"> 
+	    var millisecLabel = document.getElementById("ms");
+        var secondsLabel = document.getElementById("sec");
+        var msec = 0,sec=0;
+        var sm=setInterval(setTime,1);
+        var ss=setInterval(setsec,1000);
+        function setTime()
+        {
+            ++msec;
+            millisecLabel.innerHTML = pad(msec%100);
+        }
+        function setsec()
+        {
+            ++sec;
+            secondsLabel.innerHTML = sec;
+        }
+        function pad(val)
+        {
+            var valString = val + "";
+		    if(valString.length < 2)
+			{
+			    return "0" + valString;
+            }
+            else
+            {
+                return valString;
+            }
+        }
+	  </script>	
+	  <div id="num">
+         <table>
+            <tr>
+                <td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+		    </tr>
+            <tr>
+                <td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+		    </tr>
+            <tr>
+                <td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+		    </tr>
+            <tr>
+                <td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+				<td><button onclick="clicked(this)"></button></td>
+		    </tr>
+         </table>
+	  </div> 
+	  <div id="disp">
+	  <p onClick="window.location.reload();"><b> RESTART </b></p>
+	  <div>
+	  <script>
+		  best=[];
+         function shuffle(array) {
+          var i = array.length,j = 0,temp;
+         while (i--) {
+         j = Math.floor(Math.random() * (i+1));
+         temp = array[i];
+         array[i] = array[j];
+         array[j] = temp;
+         }
+         return array;
+         }
+         var ranNums=shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+         var x=document.getElementsByTagName("button");
+         i=0;
+         for(i=0;i<20;i++)
+         x[i].innerHTML=ranNums[i];
+		 var count=0,correct=1;
+		 function clicked(n)
+		 {
+		   if(n.innerHTML==correct)
+		   {
+			if(count<20)
+			{
+			   count=count+1; 
+			   n.innerHTML=correct+20;
+			}
+			else if(count>=20)
+            {
+				n.innerHTML=' ';
+				count=count+1;
+				
+			}
+			correct=correct+1;
+				if(correct==41)
+				{
+				  clearInterval(ss);
+				  clearInterval(sm);
+				  var ct=document.getElementById("sec").innerHTML+"."+document.getElementById("ms").innerHTML;
+				  document.getElementById("num").innerHTML= "Your Time is "+ct+" "+document.getElementById("disp").innerHTML;
+				  best.push(ct);
+                 	update();
+  				 } 
+			}
+		 }	
+		
+         window.onload
+         {
+         	best=JSON.parse(localStorage.getItem("best"));
+         	if(!best)
+         	{
+         		document.querySelector("#Bs").innerHTML="nil";
+         		best=[];
+         	}
+         	else
+         	{
+         		document.querySelector("#Bs").innerHTML=best[0];
+         	}
+         }
+         function sortbest()
+         {
+         	var lgt=best.length;
+         	for(var i=0;i<lgt;i++)
+         	{
+         		var si=parseFloat(best[i]);
+         		for(var j=0;j<i;j++)
+         		{
+         			var sj=parseFloat(best[j]);
+         			if(si<sj)
+         			{
+         				var tp=best[i];
+         				best[i]=best[j];
+         				best[j]=tp;
+         			}
+         		}
+         	}
+         }
+         function update()
+         {
+         	sortbest();
+         	var str=JSON.stringify(best);
+    		localStorage.setItem("best",str);
+         }
+         function listbest()
+         {
+         	alert("The top 5 scores are: "+best[0]+" , "+best[1]+" , "+best[2]+" , "+best[3]+" , "+best[4]);
+         }
+      </script>
+  </body>
+</html>
