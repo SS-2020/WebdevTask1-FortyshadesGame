@@ -5,8 +5,8 @@
       <style>
 	     body {
 		 padding:0 400px 0 400px;
-         background-color:grey;
-         }
+                 background-color:grey;
+                  }
 	     #BT{
 		 position: absolute;
 		 top:0px;
@@ -16,7 +16,7 @@
 		 #Time{
 		 position: absolute;
 		 top: 0px;
-         right:650px;
+                 right:720px;
 		 color: white;
 		 }
 		 #te{
@@ -65,7 +65,7 @@
 	  <label id="ms">00</label>
 	 </div>
 	 <div id="BT">
-	  <p onclick="listbest()">BEST TIME</p>
+	  <p>   BEST TIME</p>
 	  <p id="Bs"></p>
 	 </div>
 	 <div id="te"> 
@@ -198,6 +198,7 @@
          		document.querySelector("#Bs").innerHTML=best[0];
          	}
          }
+		 var lgt=best.length;
          function sortbest()
          {
          	var lgt=best.length;
@@ -222,10 +223,15 @@
          	var str=JSON.stringify(best);
     		localStorage.setItem("best",str);
          }
-         function listbest()
-         {
-         	alert("The top 5 scores are: "+best[0]+" , "+best[1]+" , "+best[2]+" , "+best[3]+" , "+best[4]);
-         }
+         var l=5,t="";
+	 if(lgt<5)
+	  l=lgt;
+	 for(var i=0;i<l;i++)
+	 { t+=best[i];
+	   if(i!=l-1)
+	   t+=",";
+	  }
+	 document.querySelector("#Bs").innerHTML=t;
       </script>
   </body>
 </html>
