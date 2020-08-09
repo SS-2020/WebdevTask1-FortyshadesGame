@@ -1,0 +1,126 @@
+body {
+    background-color:grey;
+	color:green;
+	text-align:center;
+	position:relative;
+}
+#Cover{
+	font-size: 40px;
+	top:10%;
+	display: inline;
+}	
+#BT{
+	position: absolute;
+	top:10%;
+	right:28%;
+	color: white;
+}
+#options{
+	display: none;
+}
+.o,#normal,#easy,#med,#hard
+{
+	padding: 20px;
+	border: solid red 2px;
+	cursor: pointer;
+	border-width: 10px;
+	background-color: orange;
+	color: blue;
+	font-weight: bold;
+}
+@media only screen and (max-width: 480px)
+{
+	.o,#normal,#easy,#med,#hard
+	{
+		padding: 5px;
+		left: 10%;
+		width: 70%;
+		margin: 10px;
+	}
+}
+#score{
+	font-size:20px; 
+	color:brown;
+	top:15%;
+}
+#gamearea{
+	position:absolute;
+	top:250px;
+	left: 425px;
+}
+#Time{
+	position: absolute;
+	top: 10%;
+	right:38%;
+	color: white;
+}
+#ng{
+	position:absolute;
+	top:10%;
+	left: 425px;
+	font-size: 30px;
+	color:yellow;
+	cursor:pointer;
+}	
+#ng1{
+	font-size: 30px;
+	color:yellow;
+	position:absolute;
+	top:500px;
+	left:680px;
+	cursor:pointer;
+}
+td
+{
+	background-color:black;
+	border: solid black 2px;
+	font-size: 20px;
+	color:green;
+	cursor: pointer;
+}
+@media only screen and (max-width: 340px)
+{
+	td
+	{
+		font-size: 18px;
+		border :1px solid;
+	}
+	#Bs,#BT,#ng,#disp
+	{
+		font-size: 2.5ex;
+	}
+}
+#endgame{
+	display: none;
+	text-align:center;
+	width:100%;
+	height:100%;
+}
+#normal{
+	position:absolute;
+	left:15%;
+	width:200px;
+}
+#easy{
+	position:absolute;
+	left:35%;
+	width:200px;
+}
+#med{
+	position:absolute;
+	left:55%;
+	width:200px;
+}
+#hard{
+	position:absolute;
+	left:75%;
+	width:200px;
+}
+#Game
+{
+	display:none;
+}
+
+
+      
+ 

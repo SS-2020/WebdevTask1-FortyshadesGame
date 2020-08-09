@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+</head> 
+	<link href="style.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fourty shades of grey</title>
+</head>
+<body>
+	<div id="Cover">
+		<h2>Welcome to Forty Shades of Grey Game</h2> 
+		<h5 style="color:pink;">Click <b>the numbers</b> as quickly as you can!</h5>
+		<h3 style="color:brown;">Modes</h3>
+		<button class="o" onclick="gamestart(4,5)">Normal</button>
+		<button class="o" onclick="openform()">Hacker</button>
+		<br>
+		<div id="options">
+			<br>
+			<button class="o" onclick="gamestart(5,5)">Easy(5*5)</button>
+			<button class="o" onclick="gamestart(5,6)">Medium(5*6)</button>
+			<button class="o" onclick="gamestart(6,6)">Hard(6*6)</button>
+		</div>
+	</div>
+	<div id="Game">
+		<div id="Time">
+			<p>TIME</p>
+			<label id="sec">0</label>
+			<label >.</label>
+			<label id="ms">00</label>
+		</div>
+		<div id="BT">
+			<p>   BEST TIME</p>
+			<p id="Bs"></p>
+		</div>
+		<div id="ng"> 
+			<p onClick="window.location.reload();"><b>NEW GAME</b></p>
+		</div>
+		<div id="gamearea">
+		</div>
+	</div>
+	<div id="endgame">
+		<label id="score">Your Score is:</label>
+		<h2>LEADERBOARD</h2>
+		<button id="normal"><h3>NORMAL</h3></button>
+		<button id="easy"><h3>EASY</h3></button>
+		<button id="med"><h3>MEDIUM</h3></button>
+		<button id="hard"><h3>HARD</h3></button>
+		<div id="ng1"> 
+			<p onClick="window.location.reload();"><b>NEW GAME</b></p>
+		</div>
+	</div>
+	<audio class='move' src='points.mp3' type='audio/mp3'></audio>
+	<audio class='over' src='gameover.mp3' type='audio/mp3'></audio>
+	<script src="script.js"> </script>
+</body>
+
+</html>
