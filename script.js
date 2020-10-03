@@ -1,8 +1,7 @@
 var millisecLabel = document.getElementById("ms");
 var secondsLabel = document.getElementById("sec");
 var msec = 0,sec=0;
-var sm=setInterval(setTime,1);
-var ss=setInterval(setsec,1000);
+var sm, ss;
 var X,Y;
 var ct;
 function openform() {
@@ -68,6 +67,8 @@ function gamestart(x,y){
 		table.appendChild(tr);
 	}
 	area.appendChild(table);
+	sm=setInterval(setTime,1);
+	ss=setInterval(setsec,1000);
 }
 
 function setTime()
